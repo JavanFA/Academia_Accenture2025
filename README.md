@@ -46,12 +46,12 @@ Antes de executar o projeto, certifique-se de ter os seguintes softwares instala
 
 1.  **Clone o repositório para a sua máquina local:**
     ```bash
-    git clone <URL_DO_SEU_REPOSITORIO_GIT>
+    git clone (https://github.com/JavanFA/desafio-cypress-accenture.git)
     ```
 
 2.  **Navegue até o diretório raiz do projeto:**
     ```bash
-    cd nome-do-seu-projeto
+    cd desafio-cypress
     ```
 
 3.  **Instale as dependências do projeto:**
