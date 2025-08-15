@@ -1,0 +1,9 @@
+{
+    "firstName": "Maria",
+    "lastName": "Silva",
+    "email": "maria.silva@example.com",
+    "age": "28",
+    "salary": "7000",
+    "department": "Engenharia",
+    "invalidEmail": "maria.silva.com"
+  }
