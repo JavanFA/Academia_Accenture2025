@@ -51,7 +51,7 @@ Antes de executar o projeto, certifique-se de ter os seguintes softwares instala
 
 2.  **Navegue até o diretório raiz do projeto:**
     ```bash
-    cd desafio-cypress
+    cd desafio-cypress-accenture
     ```
 
 3.  **Instale as dependências do projeto:**
