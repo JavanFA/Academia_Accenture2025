@@ -32,8 +32,8 @@ A suíte de testes está dividida em pastas por tipo de cenário para máxima or
 ## 🌳 Estrutura de Arquivos
 
 O projeto segue uma estrutura organizada para facilitar a manutenção e escalabilidade:
-
-DESAFIO-CYPRESS/
+```
+Academia_Accenture2025/
 ├── cypress/
 │   ├── e2e/
 │   │   ├── validacoes/           # Testes de validação e erro
@@ -62,6 +62,7 @@ DESAFIO-CYPRESS/
 ├── .gitignore
 ├── cypress.config.js
 └── package.json
+```
 
 ## 📋 Pré-requisitos
 
