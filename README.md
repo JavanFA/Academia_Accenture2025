@@ -8,21 +8,14 @@ O projeto realiza a automação de cenários de teste na página de "Web Tables"
 
 ## ✨ Cenários Automatizados
 
-A suíte de testes está dividida em três features principais para máxima organização e manutenibilidade:
+A suíte de testes está dividida em pastas por tipo de cenário para máxima organização e clareza, permitindo a execução seletiva dos testes.
 
-**1. `webTables.feature` (Cenário de Sucesso - "Caminho Feliz")**
-* Valida o ciclo de vida completo de um registro (CRUD - Create, Read, Update, Delete).
-* Utiliza dados dinâmicos gerados pela biblioteca **Faker.js** para garantir que cada execução seja única e robusta.
-* Valida cada etapa (cadastro, edição e exclusão) de forma individual e sequencial.
+### Cenários Positivos (`cypress/e2e/positivo/`)
+* **`webTables.feature`**: Valida o ciclo de vida completo de um registro (CRUD), utilizando dados dinâmicos gerados pela biblioteca **Faker.js**.
+* **`deleteRecords.feature`**: Testa a exclusão de todos os registros pré-existentes na tabela, validando que a tabela fica vazia ao final.
 
-**2. `formValidations.feature` (Cenários de Validação - "Caminho Negativo")**
-* Valida o comportamento do formulário ao tentar submeter dados inválidos.
-* Cobre o teste de submissão com um campo obrigatório em branco, um formato de e-mail inválido e salário inválido.
-* Utiliza uma massa de dados estática e controlada via **Fixtures** para garantir a previsibilidade dos testes de erro.
-
-**3. `deleteRecords.feature` (Cenário de Manipulação de Estado)**
-* Testa a funcionalidade de exclusão dos registros pré-existentes na tabela.
-* Valida dinamicamente que todos os registros foram removidos, confirmando que a tabela exibe a mensagem "No rows found".
+### Cenários Negativos (`cypress/e2e/negativo/`)
+* **`formValidations.feature`**: Valida o comportamento do formulário ao tentar submeter dados inválidos, como campos obrigatórios em branco e formatos de e-mail incorretos, utilizando uma massa de dados estática via **Fixtures**.
 
 ## 🛠️ Tecnologias e Arquitetura
 
@@ -31,42 +24,41 @@ A suíte de testes está dividida em três features principais para máxima orga
 * **BDD (Behavior-Driven Development):**
     * **Gherkin:** para a escrita declarativa das especificações em arquivos `.feature`.
     * **Cucumber:** integração com o Cypress através do plugin `cypress-cucumber-preprocessor`.
-
 * **Padrão de Projeto e Boas Práticas:**
-    * **Custom Commands:** Toda a lógica de interação com a página foi abstraída em comandos customizados do Cypress. Os comandos foram separados por responsabilidade em módulos distintos (CRUD, Validações, Ações na Tabela) para manter o código limpo, organizado e de fácil manutenção.
-    * **Estratégia de Dados Híbrida:** O projeto utiliza **Faker.js** para dados dinâmicos no caminho feliz e **Fixtures** para dados estáticos nos caminhos negativos.
-    * **Tratamento de Dados Sensíveis:** Foi implementado um comando utilitário global `cy.typeSensitive()` que utiliza a opção `{ log: false }` para garantir que dados pessoais não sejam expostos nos logs ou vídeos da execução.
-    * **Abstração de Seletores:** Os seletores de elementos da página foram centralizados e exportados de um arquivo de "elements", evitando a duplicação e facilitando a manutenção.
+    * **Custom Commands Modulares:** A lógica de interação com a página foi abstraída em comandos customizados do Cypress. Estes comandos foram modularizados e separados por responsabilidade em arquivos distintos na pasta `support/pages/`, como `registrationForm.page.js` e `deleteTable.page.js`.
+    * **Estratégia de Dados Híbrida:** O projeto utiliza **Faker.js** para dados dinâmicos nos testes de caminho feliz e **Fixtures** para dados estáticos e controlados nos testes de caminho negativo.
+    * **Tratamento de Dados Sensíveis:** Foi implementado um comando utilitário `cy.typeSensitive()` que utiliza a opção `{ log: false }` para garantir que dados pessoais não sejam expostos nos logs ou vídeos da execução.
 
-## 📋 Pré-requisitos
+## 🌳 Estrutura de Arquivos
 
-Antes de executar o projeto, certifique-se de ter os seguintes softwares instalados:
+O projeto segue uma estrutura organizada para facilitar a manutenção e escalabilidade:
 
-* [Node.js](https://nodejs.org/en/) (versão 16 ou superior)
-* [Git](https://git-scm.com/) (para clonar o repositório)
-
-## 🚀 Como Executar
-
-1.  **Clone o repositório para a sua máquina local:**
-    ```bash
-    git clone git@github.com:JavanFA/Academia_Accenture2025.git
-    ```
-
-2.  **Navegue até o diretório raiz do projeto:**
-    ```bash
-    cd Academia_Accenture2025
-    ```
-
-3.  **Instale as dependências do projeto:**
-    ```bash
-    npm install
-    ```
-
-4.  **Execute o Cypress em modo interativo (Test Runner):**
-    ```bash
-    npx cypress open
-    ```
-
-5.  Na interface do Cypress que se abrirá, você verá os três arquivos listados: `deleteRecords.feature`, `formValidations.feature` e `webTables.feature`. Clique em qualquer um deles para iniciar a execução.
-
----
+DESAFIO-CYPRESS/
+├── cypress/
+│   ├── e2e/
+│   │   ├── validacao/           # Testes de validação e erro
+│   │   │   └── formValidations.feature
+│   │       ├── deleteRecords.feature
+│   │   └── crud/                # Testes de fluxo principal
+│   │       └── webTables.feature
+│   │
+│   ├── fixtures/                # Massa de dados estática
+│   │   └── userData.json
+│   │
+│   └── support/                 # Arquivos de suporte e configuração
+│       ├── pages/               # Módulos com a lógica dos comandos
+│       │   ├── deleteTable.page.js
+│       │   ├── registrationForm.page.js
+│       │   └── registrationValidation.page.js
+│       │
+│       ├── step_definition/     # "Cola" entre Gherkin e os comandos
+│       │   ├── deleteRecords.cy.js
+│       │   ├── formValidations.cy.js
+│       │   └── webTables.cy.js
+│       │
+│       ├── commands.js          # Carregador central dos módulos de comandos
+│       └── e2e.js               # Configurações globais (ex: handler de exceção)
+│
+├── .gitignore
+├── cypress.config.js
+└── package.json
