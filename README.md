@@ -36,7 +36,7 @@ O projeto segue uma estrutura organizada para facilitar a manutenção e escalab
 DESAFIO-CYPRESS/
 ├── cypress/
 │   ├── e2e/
-│   │   ├── validacao/           # Testes de validação e erro
+│   │   ├── validacoes/           # Testes de validação e erro
 │   │   │   └── formValidations.feature
 │   │       ├── deleteRecords.feature
 │   │   └── crud/                # Testes de fluxo principal
@@ -62,3 +62,32 @@ DESAFIO-CYPRESS/
 ├── .gitignore
 ├── cypress.config.js
 └── package.json
+
+## 📋 Pré-requisitos
+
+* [Node.js](https://nodejs.org/en/) (versão 16 ou superior)
+* [Git](https://git-scm.com/)
+
+## 🚀 Como Executar
+
+1.  **Clone o repositório:**
+    ```bash
+    git clone https://github.com/JavanFA/Academia_Accenture2025.git
+    ```
+
+2.  **Navegue até o diretório do projeto:**
+    ```bash
+    cd Academia_Accenture2025
+    ```
+
+3.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
+
+4.  **Abra o Cypress Test Runner:**
+    ```bash
+    npx cypress open
+    ```
+
+5.  Na interface do Cypress, você verá a estrutura de pastas `crud` e `validacoes`. Clique em qualquer um dos três arquivos `.feature` para iniciar a execução.
