@@ -19,3 +19,4 @@ And('por fim, realizo a exclusão do registro', () => {
 Then('o registro não deve mais ser encontrado na tabela', () => {
     cy.validarExclusaoNaTabela()
 })
+

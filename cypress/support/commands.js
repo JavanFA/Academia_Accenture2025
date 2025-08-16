@@ -24,5 +24,5 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import './pages/registrationForm.page'
-import './pages/registrationValidation'
-
+import './pages/registrationValidation.page'
+import './pages/deleteTable.page'
