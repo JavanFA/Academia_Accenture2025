@@ -8,7 +8,3 @@ npm-debug.log
 # Arquivos gerados pelo Cypress
 /cypress/videos/
 /cypress/screenshots/
-
-# Arquivos de ambiente (boa prática)
-.env
-cypress.env.json
